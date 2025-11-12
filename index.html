@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ar">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>معلومات الدفع - شركة ترفل</title>
+<style>
+  body{font-family: Tahoma, Arial, sans-serif;text-align:center;padding:24px;background:#f7f9fb;color:#111}
+  .card{max-width:420px;margin:20px auto;background:#fff;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.08);padding:20px}
+  h1{font-size:20px;margin:8px 0 14px}
+  .field{text-align:center;background:#f2f5f9;padding:12px;border-radius:10px;margin:10px 0;font-size:16px;word-break:break-all}
+  .small{font-size:13px;color:#666;margin-bottom:6px}
+  button{display:inline-block;margin:8px 6px;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-size:15px}
+  .copy{background:#ffd54f} /* yellow */
+  .hint{font-size:13px;color:#444;margin-top:8px}
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>معلومات الدفع</h1>
+    <div class="small">اسم الحساب</div>
+    <div class="field" id="name">شركة ترفل</div>
+    <div class="small">رقم الآيبان</div>
+    <div class="field" id="iban">SA4780000597608010433406</div>
+    <div class="small">رقم الحساب</div>
+    <div class="field" id="accnum">59700-001-0006080433406</div>
+    <div>
+      <button class="copy" onclick="copyText('iban')">نسخ الآيبان</button>
+      <button class="copy" onclick="copyText('name')">نسخ اسم الحساب</button>
+      <button class="copy" onclick="copyText('accnum')">نسخ رقم الحساب</button>
+    </div>
+    <div class="hint" id="msg"></div>
+  </div>
+
+<script>
+function copyText(id){
+  const txt = document.getElementById(id).innerText.trim();
+  navigator.clipboard.writeText(txt).then(()=>{
+    document.getElementById('msg').innerText = 'تم النسخ إلى الحافظة.';
+    setTimeout(()=>document.getElementById('msg').innerText='',2000);
+  }).catch(()=>{
+    document.getElementById('msg').innerText = 'فشل النسخ — يرجى النسخ يدويًا.';
+  });
+}
+</script>
+</body>
+</html>
